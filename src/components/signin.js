@@ -36,9 +36,17 @@ class SignIn extends Component {
     }
   }
 
-  renderErrorMessage = () => {
+  renderFormError = () => {
     if (this.state.formError === true) {
-      return (<p className="errorMessage">Error: fill out each form!</p>);
+      return (<p className="errorMessage">Error: Please fill out each form</p>);
+    } else {
+      return (<div />);
+    }
+  }
+
+  renderServerError = () => {
+    if (this.props.error === true) {
+      return (<p className="errorMessage">Error: incorrect username or password</p>);
     } else {
       return (<div />);
     }
@@ -54,12 +62,18 @@ class SignIn extends Component {
           <p>Password:</p>
           <textarea value={this.state.password} onChange={this.onPasswordChange} />
           <FontAwesomeIcon className="authIcon" onClick={this.handleSignIn} icon={faSignInAlt} />
-          {this.renderErrorMessage()}
+          {this.renderFormError()}
+          {this.renderServerError()}
         </div>
       </div>
-
     );
   }
 }
 
-export default connect(null, { signinUser })(SignIn);
+function mapStateToProps(reduxState) {
+  return {
+    error: reduxState.auth.error,
+  };
+}
+
+export default connect(mapStateToProps, { signinUser })(SignIn);

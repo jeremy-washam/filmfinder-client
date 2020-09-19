@@ -2,6 +2,7 @@ import { ActionTypes } from '../actions';
 
 const initialState = {
   authenticated: false,
+  error: false,
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -11,7 +12,7 @@ const AuthReducer = (state = initialState, action) => {
     case ActionTypes.DEAUTH_USER:
       return { ...state, authenticated: false };
     case ActionTypes.AUTH_ERROR:
-      return { ...state, authenticated: false };
+      return { ...state, authenticated: false, error: true };
     default:
       return state;
   }

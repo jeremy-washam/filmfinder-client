@@ -14,8 +14,8 @@ import PrivateRoute from './privateroute';
 const App = (props) => {
   return (
     <Router>
+      <Nav />
       <div>
-        <Nav />
         <Switch>
           <Route exact path="/" component={Posts} />
           <PrivateRoute path="/posts/new" component={NewPost} />

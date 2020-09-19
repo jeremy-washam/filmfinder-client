@@ -9,12 +9,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { signoutUser } from '../actions/index';
 
-function mapStateToProps(reduxState) {
-  return {
-    authenticated: reduxState.auth.authenticated,
-  };
-}
-
 const renderAuth = (authenticated, signout, history) => {
   if (authenticated) {
     return (
@@ -76,5 +70,11 @@ const Nav = (props) => {
     </nav>
   );
 };
+
+function mapStateToProps(reduxState) {
+  return {
+    authenticated: reduxState.auth.authenticated,
+  };
+}
 
 export default connect(mapStateToProps, { signoutUser })(Nav);

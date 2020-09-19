@@ -137,6 +137,5 @@ function mapStateToProps(reduxState) {
     currentPost: reduxState.posts.current,
   };
 }
-// enables this.props.currentPost
-// and this.props.fetchPost, this.props.deletePost, and this.props.updatePost
+
 export default connect(mapStateToProps, { fetchPost, deletePost, updatePost })(Post);
